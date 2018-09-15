@@ -28,10 +28,16 @@ public class Interaction : MonoBehaviour
 		if (type == interactionType.ball)
 		{
 			FindObjectOfType<Controller>().Grab(transform);
+			
+			sub.Talk("bal", true);
+
 		}
 		else if(type == interactionType.stick)
 		{
 			FindObjectOfType<Controller>().Grab(transform);
+			
+			sub.Talk("sticc", true);
+
 		}
 		else
 		{

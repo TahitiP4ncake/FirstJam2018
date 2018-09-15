@@ -77,7 +77,7 @@ public class Controller : MonoBehaviour
 			if (running == false)
 			{
 				running = true;
-				anim.SetTrigger("Switch");
+				anim.SetTrigger("Run");
 			}
 		}
 		else
@@ -86,7 +86,7 @@ public class Controller : MonoBehaviour
 			if (running == true)
 			{
 				running = false;
-				anim.SetTrigger("Switch");
+				anim.SetTrigger("Stop");
 			}
 		}
 
