@@ -38,10 +38,14 @@ public class Controller : MonoBehaviour
 	public Transform grabbedObject;
 	
 	public float throwForce;
+	
+	
 
 
 	[Space] public Animator anim;
 	private bool running;
+
+	public GameObject aim;
 	
 	void Start ()
 	{
@@ -64,6 +68,8 @@ public class Controller : MonoBehaviour
 		TurnBody();
 		
 		TurnHead();
+		
+		CheckAim();
 	}
 
 	void CheckInputs()
@@ -92,6 +98,19 @@ public class Controller : MonoBehaviour
 
 		
 	}
+
+	void CheckAim()
+	{
+		if (Physics.Raycast(head.position, head.forward, out hit, barkDistance, barkMask))
+		{
+			aim.SetActive(true);
+		}
+		else
+		{
+			aim.SetActive(false);
+		}
+	}
+	
 	//tourner tout le corp
 	void TurnBody()
 	{
@@ -172,6 +191,8 @@ public class Controller : MonoBehaviour
 	{
 		grabbedObject.parent = null;
 		Rigidbody _rb = grabbedObject.gameObject.AddComponent<Rigidbody>();
+		_rb.drag = 1;
+		_rb.angularDrag = 1;
 		_rb.velocity = head.forward * throwForce + Vector3.up * throwForce/2;
 		grabbedObject.GetComponent<Collider>().enabled = true;
 

@@ -18,6 +18,10 @@ public class Interaction : MonoBehaviour
 
 	public interactionType type;
 
+	public List<string> lines;
+
+	public int lineIndex;
+	
 	private void Start()
 	{
 		sub = FindObjectOfType<SubtitleManager>();
@@ -41,7 +45,17 @@ public class Interaction : MonoBehaviour
 		}
 		else
 		{
-			sub.Talk("You're talking to me", true);
+			
+			sub.Talk(lines[lineIndex], true);
+			if (lineIndex < lines.Count - 1)
+			{
+				lineIndex++;
+			}
+			else
+			{
+				lineIndex = 0;
+			}
+
 			PlaySound("ah");
 		}
 			
