@@ -29,6 +29,9 @@ public class Chateau : MonoBehaviour
 				}
 
 				
+				Invoke("Rebuild", 15);
+
+				
 				built = false;
 				rend.sprite = brokenSprite;
 
@@ -40,7 +43,6 @@ public class Chateau : MonoBehaviour
 
 
 				
-				Invoke("Rebuild", 15);
 			}
 		}
 	}
