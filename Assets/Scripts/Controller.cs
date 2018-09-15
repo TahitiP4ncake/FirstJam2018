@@ -1,9 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class Controller : MonoBehaviour
 {
+
+	public SubtitleManager sub;
+	
+	[Space]
 
 	public Rigidbody rb;
 
@@ -19,6 +24,11 @@ public class Controller : MonoBehaviour
 	public float maxY;
 
 	[Space] public Transform head;
+
+
+
+	
+	
 	
 	
 	
@@ -27,12 +37,15 @@ public class Controller : MonoBehaviour
 		Cursor.visible = false;
 		Cursor.lockState = CursorLockMode.Locked;
 	}
-	
-	void Update () 
-	{
-		
-	}
 
+	void Update()
+	{
+		if (Input.GetMouseButtonDown(1))
+		{
+			Bark();
+		}
+	}
+	
 	void FixedUpdate()
 	{
 		CheckInputs();
@@ -55,6 +68,8 @@ public class Controller : MonoBehaviour
 		{
 			Stop();
 		}
+
+		
 	}
 	//tourner tout le corp
 	void TurnBody()
@@ -82,5 +97,26 @@ public class Controller : MonoBehaviour
 	void Stop()
 	{
 		rb.velocity = Vector3.zero;
+	}
+
+	void Bark()
+	{
+		PlaySound("bark");
+
+		
+		sub.Talk("BARK", false);
+		
+		
+	}
+
+	void PlaySound(string _string)
+	{
+		AudioSource _son = Harmony.SetSource(_string);
+
+		_son.pitch = Random.Range(.8f, 1.2f);
+
+		_son.volume = .5f;
+		
+		Harmony.Play(_son);
 	}
 }
