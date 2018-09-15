@@ -65,4 +65,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ListClips:
   - {fileID: 8300000, guid: 29bcddc59efad814e84271a800ea0fb1, type: 3}
+  - {fileID: 8300000, guid: 7b14b108d545ef04184b802a6409601d, type: 3}
   Source: []

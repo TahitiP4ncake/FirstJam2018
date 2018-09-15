@@ -26,11 +26,22 @@ public class Controller : MonoBehaviour
 	[Space] public Transform head;
 
 
+	private RaycastHit hit;
 
+	public float barkDistance;
+
+	public LayerMask barkMask;
+
+
+	[Space] public Transform mouth;
+
+	public Transform grabbedObject;
 	
-	
-	
-	
+	public float throwForce;
+
+
+	[Space] public Animator anim;
+	private bool running;
 	
 	void Start ()
 	{
@@ -42,7 +53,7 @@ public class Controller : MonoBehaviour
 	{
 		if (Input.GetMouseButtonDown(1))
 		{
-			Bark();
+			Interact();
 		}
 	}
 	
@@ -63,10 +74,20 @@ public class Controller : MonoBehaviour
 		if (Input.GetMouseButton(0))
 		{
 			Run();
+			if (running == false)
+			{
+				running = true;
+				anim.SetTrigger("Switch");
+			}
 		}
 		else
 		{
 			Stop();
+			if (running == true)
+			{
+				running = false;
+				anim.SetTrigger("Switch");
+			}
 		}
 
 		
@@ -99,6 +120,23 @@ public class Controller : MonoBehaviour
 		rb.velocity = Vector3.zero;
 	}
 
+	void Interact()
+	{
+
+		if (grabbedObject != null)
+		{
+			Throw();
+		}
+		else if (Physics.Raycast(head.position, head.forward, out hit, barkDistance, barkMask))
+		{
+			hit.collider.GetComponent<Interaction>().Poke();
+		}
+		else
+		{
+			Bark();
+		}
+	}
+	
 	void Bark()
 	{
 		PlaySound("bark");
@@ -118,5 +156,25 @@ public class Controller : MonoBehaviour
 		_son.volume = .5f;
 		
 		Harmony.Play(_son);
+	}
+
+	public void Grab(Transform _target)
+	{
+		grabbedObject = _target;
+		
+		Destroy(_target.GetComponent<Rigidbody>());
+		_target.SetParent(mouth);
+		_target.transform.localPosition = Vector3.zero;
+		_target.GetComponent<Collider>().enabled = false;
+	}
+
+	void Throw()
+	{
+		grabbedObject.parent = null;
+		Rigidbody _rb = grabbedObject.gameObject.AddComponent<Rigidbody>();
+		_rb.velocity = head.forward * throwForce + Vector3.up * throwForce/2;
+		grabbedObject.GetComponent<Collider>().enabled = true;
+
+		grabbedObject = null;
 	}
 }
