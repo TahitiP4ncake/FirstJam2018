@@ -9,29 +9,45 @@ public class Chateau : MonoBehaviour
 
 	public List<Sprite> sprites;
 
+	public Sprite brokenSprite;
+
 	public bool built;
+
+	public List<ParticleSystem> sands;
 	
 	private void OnTriggerEnter(Collider other)
 	{
-		if (built)
+		if (other.tag == "Player")
 		{
-			built = false;
-			rend.sprite = sprites[1];
 
-			AudioSource _son = Harmony.SetSource("chateau");
+			if (built)
+			{
+				
+				foreach (var _sand in sands)
+				{
+					_sand.Play();
+				}
 
-			_son.pitch = Random.Range(.9f, 1.1f);
+				
+				built = false;
+				rend.sprite = brokenSprite;
 
-			Harmony.Play(_son);
+				AudioSource _son = Harmony.SetSource("chateau");
 
-			
-			Invoke("Rebuild", 15);
+				_son.pitch = Random.Range(.9f, 1.1f);
+
+				Harmony.Play(_son);
+
+
+				
+				Invoke("Rebuild", 15);
+			}
 		}
 	}
 
 	void Rebuild()
 	{
 		built = true;
-		rend.sprite = sprites[0];
+		rend.sprite = sprites[Random.Range(0,sprites.Count)];
 	}
 }

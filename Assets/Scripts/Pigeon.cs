@@ -36,6 +36,8 @@ public class Pigeon : MonoBehaviour
 		Invoke("Aim", Random.Range(1f, 2f));
 
 		rend.sprite = sprites[Random.Range(0, sprites.Count)];
+
+		rend.castShadows = true;
 	}
 
 
@@ -57,11 +59,11 @@ public class Pigeon : MonoBehaviour
 		StopAllCoroutines();
 
 		direction = transform.position +
-		            new Vector3(Random.Range(-1f, 1f), 20, Random.Range(-1f, 1f));
+		            new Vector3(Random.Range(-1f, 1f), 5, Random.Range(-1f, 1f));
 
 		//Change animation;
 
-		rend.sprite = flySprite;	
+		//rend.sprite = flySprite;	
 		
 		StartCoroutine(Fly());
 	}
