@@ -22,12 +22,20 @@ public class Pigeon : MonoBehaviour
 	public float jumpDistance;
 
 	public bool closeEnough;
+
+	public SpriteRenderer rend;
+
+	public List<Sprite> sprites;
+
+	public Sprite flySprite;
 	
 	void Start ()
 	{
 		origin = transform.position;
 		
 		Invoke("Aim", Random.Range(1f, 2f));
+
+		rend.sprite = sprites[Random.Range(0, sprites.Count)];
 	}
 
 
@@ -52,6 +60,8 @@ public class Pigeon : MonoBehaviour
 		            new Vector3(Random.Range(-1f, 1f), 20, Random.Range(-1f, 1f));
 
 		//Change animation;
+
+		rend.sprite = flySprite;	
 		
 		StartCoroutine(Fly());
 	}
