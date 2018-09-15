@@ -7658,7 +7658,7 @@ GameObject:
   - component: {fileID: 1661578165}
   - component: {fileID: 1661578164}
   m_Layer: 0
-  m_Name: Particle System
+  m_Name: Papillions
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
