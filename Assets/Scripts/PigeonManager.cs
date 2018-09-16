@@ -15,6 +15,10 @@ public class PigeonManager : MonoBehaviour
 
 	public SpriteRenderer sandwich;
 
+	public Interaction gamine;
+
+	public SpriteRenderer gamineFace;
+
 	public void Fly()
 	{
 		pigeonGone++;
@@ -32,7 +36,12 @@ public class PigeonManager : MonoBehaviour
 
 		sandwich.enabled = false;
 		rend.sprite = finalSprite;
-		
+
+		gamine.done = true;
+		gamine.lineIndex = 0;
+
+		gamineFace.enabled = false;
+
 	}
 
 }

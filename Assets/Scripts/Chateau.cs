@@ -17,6 +17,8 @@ public class Chateau : MonoBehaviour
 
 	public List<ParticleSystem> sands;
 
+
+	public List<string> lines;
 	private void Start()
 	{
 		sub = FindObjectOfType<SubtitleManager>();
@@ -34,8 +36,10 @@ public class Chateau : MonoBehaviour
 				{
 					_sand.Play();
 				}
+
+				FindObjectOfType<Morve>().rend.enabled = true;
 				
-				sub.Talk("nooo, my castle", true);
+				sub.Talk(lines[Random.Range(0,2)]);
 				
 				Invoke("Rebuild", 15);
 
@@ -63,5 +67,8 @@ public class Chateau : MonoBehaviour
 	{
 		built = true;
 		rend.sprite = sprites[Random.Range(0,sprites.Count)];
+		
+		FindObjectOfType<Morve>().rend.enabled = false;
+
 	}
 }

@@ -337,6 +337,7 @@
           <e p="Interaction.cs" t="Include" />
           <e p="Manager.cs" t="Include" />
           <e p="Menu.cs" t="Include" />
+          <e p="Morve.cs" t="Include" />
           <e p="Music.cs" t="Include" />
           <e p="Pigeon.cs" t="Include" />
           <e p="PigeonManager.cs" t="Include" />
