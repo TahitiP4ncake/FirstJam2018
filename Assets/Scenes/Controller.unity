@@ -4421,9 +4421,7 @@ Prefab:
       propertyPath: manager
       value: 
       objectReference: {fileID: 1985691525}
-    m_RemovedComponents:
-    - {fileID: 23252222924287576, guid: 05fb89f365cfdff48927ecb5ced5a877, type: 2}
-    - {fileID: 33163554031434096, guid: 05fb89f365cfdff48927ecb5ced5a877, type: 2}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 05fb89f365cfdff48927ecb5ced5a877, type: 2}
   m_IsPrefabAsset: 0
 --- !u!1001 &2128979743
