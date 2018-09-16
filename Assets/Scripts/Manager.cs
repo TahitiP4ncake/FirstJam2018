@@ -7,7 +7,8 @@ using UnityEngine.UI;
 
 public class Manager : MonoBehaviour
 {
-
+	private SubtitleManager sub;
+	
 	public float sessionTime;
 
 	public Image whiteScreen;
@@ -30,6 +31,11 @@ public class Manager : MonoBehaviour
 		whiteScreen.color = Color.white;
 		whiteScreen.CrossFadeAlpha(0,2,true);
 		StartCoroutine(Timer());
+
+		sub = FindObjectOfType<SubtitleManager>();
+
+		sub.Talk("Come on, let's play!", true);
+
 	}
 	
 	void Update () {
@@ -62,6 +68,10 @@ public class Manager : MonoBehaviour
 	IEnumerator Timer()
 	{
 		yield return new WaitForSecondsRealtime(sessionTime);
+		
+		sub.Talk("Dad's waiting for us, we're going home!", true);
+		
+		yield return new WaitForSecondsRealtime(3);
 		
 		End();
 		
