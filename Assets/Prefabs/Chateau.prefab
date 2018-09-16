@@ -151,7 +151,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4848650944852256}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 90.00001, y: 0, z: 0}
 --- !u!4 &4668401826300280
 Transform:
@@ -164,7 +164,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4848650944852256}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 90.00001, y: 0, z: 0}
 --- !u!4 &4848650944852256
 Transform:
@@ -178,8 +178,8 @@ Transform:
   m_Children:
   - {fileID: 4876061547953340}
   - {fileID: 4278285757642414}
-  - {fileID: 4668401826300280}
   - {fileID: 4430788339806688}
+  - {fileID: 4668401826300280}
   - {fileID: 4227113284886218}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -18863,7 +18863,7 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: c2a0a5406809f92429ae4b34b8c3ed12, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

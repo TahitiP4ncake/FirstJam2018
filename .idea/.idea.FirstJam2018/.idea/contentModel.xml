@@ -336,6 +336,7 @@
           <e p="Interaction.cs" t="Include" />
           <e p="Manager.cs" t="Include" />
           <e p="Pigeon.cs" t="Include" />
+          <e p="PigeonManager.cs" t="Include" />
           <e p="SubtitleManager.cs" t="Include" />
         </e>
         <e p="ShaderForge" t="Include">
@@ -773,6 +774,7 @@
           <e p="Readme.txt" t="Include" />
         </e>
         <e p="Shaders" t="Include">
+          <e p="Shader02.shader" t="Include" />
           <e p="sprite.shader" t="Include" />
         </e>
         <e p="TextMesh Pro" t="Include">

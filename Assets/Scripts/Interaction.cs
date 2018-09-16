@@ -6,13 +6,15 @@ public enum interactionType
 {
 	maitre,
 	ball, 
-	stick
+	stick, 
+	hide
 	
 }
 
 public class Interaction : MonoBehaviour
 {
-	
+
+	public Manager manager;
 	
 	private SubtitleManager sub;
 
@@ -21,6 +23,8 @@ public class Interaction : MonoBehaviour
 	public List<string> lines;
 
 	public int lineIndex;
+
+	private bool done;
 	
 	private void Start()
 	{
@@ -42,6 +46,24 @@ public class Interaction : MonoBehaviour
 			
 			sub.Talk("sticc", true);
 
+		}
+		else if (type == interactionType.hide)
+		{
+			if (!done)
+			{
+				sub.Talk(lines[manager.gaminFound], true);
+				manager.gaminFound++;
+
+				//change animation
+			
+				//PlaySound("sad");
+				
+				done = true;
+			}
+			
+		
+			
+			
 		}
 		else
 		{

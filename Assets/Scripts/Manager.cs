@@ -13,6 +13,8 @@ public class Manager : MonoBehaviour
 	public Image whiteScreen;
 
 	public TextMeshProUGUI endText;
+
+	public int gaminFound;
 	
 	void Start()
 	{

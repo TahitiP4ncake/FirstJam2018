@@ -7,6 +7,8 @@ public class Chateau : MonoBehaviour
 
 	public SpriteRenderer rend;
 
+	private SubtitleManager sub;
+
 	public List<Sprite> sprites;
 
 	public Sprite brokenSprite;
@@ -14,7 +16,12 @@ public class Chateau : MonoBehaviour
 	public bool built;
 
 	public List<ParticleSystem> sands;
-	
+
+	private void Start()
+	{
+		sub = FindObjectOfType<SubtitleManager>();
+	}
+
 	private void OnTriggerEnter(Collider other)
 	{
 		if (other.tag == "Player")
@@ -27,13 +34,16 @@ public class Chateau : MonoBehaviour
 				{
 					_sand.Play();
 				}
-
+				
+				sub.Talk("nooo, my castle", true);
 				
 				Invoke("Rebuild", 15);
 
 				
 				built = false;
 				rend.sprite = brokenSprite;
+				
+				
 
 				AudioSource _son = Harmony.SetSource("chateau");
 
