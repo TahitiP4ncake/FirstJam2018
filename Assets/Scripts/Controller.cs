@@ -161,7 +161,7 @@ public class Controller : MonoBehaviour
 	
 	void Bark()
 	{
-		PlaySound("bark");
+		PlaySound("SFX_bark2");
 
 		
 		sub.Talk("BARK", false);

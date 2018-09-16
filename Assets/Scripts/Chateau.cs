@@ -45,7 +45,7 @@ public class Chateau : MonoBehaviour
 				
 				
 
-				AudioSource _son = Harmony.SetSource("chateau");
+				AudioSource _son = Harmony.SetSource("SFX_sand_castle");
 
 				_son.pitch = Random.Range(.9f, 1.1f);
 
