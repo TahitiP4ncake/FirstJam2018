@@ -38,14 +38,20 @@ public class Controller : MonoBehaviour
 	public Transform grabbedObject;
 	
 	public float throwForce;
-	
-	
+
+
+	public List<AudioSource> dogSound;
+
+	public List<AudioClip> dogBreaths;
+
 
 
 	[Space] public Animator anim;
 	private bool running;
 
 	public GameObject aim;
+
+	public bool bobbleHead = true;
 	
 	void Start ()
 	{
@@ -83,7 +89,13 @@ public class Controller : MonoBehaviour
 			if (running == false)
 			{
 				running = true;
+				if(bobbleHead)
 				anim.SetTrigger("Run");
+
+				dogSound[1].Stop();
+				
+				dogSound[0].Play();
+				dogSound[0].pitch = Random.Range(.9f, 1.1f);
 			}
 		}
 		else
@@ -93,6 +105,15 @@ public class Controller : MonoBehaviour
 			{
 				running = false;
 				anim.SetTrigger("Stop");
+				
+				
+				dogSound[0].Stop();
+
+				dogSound[1].clip = dogBreaths[Random.Range(0, dogBreaths.Count)];
+				
+				dogSound[1].Play();
+				dogSound[1].pitch = Random.Range(.9f, 1.1f);
+				
 			}
 		}
 
@@ -158,7 +179,7 @@ public class Controller : MonoBehaviour
 	
 	void Bark()
 	{
-		PlaySound("bark");
+		PlaySound("SFX_bark2");
 
 		
 		sub.Talk("BARK", false);
@@ -166,13 +187,13 @@ public class Controller : MonoBehaviour
 		
 	}
 
-	void PlaySound(string _string)
+	void PlaySound(string _string, float _vol = .5f)
 	{
 		AudioSource _son = Harmony.SetSource(_string);
 
-		_son.pitch = Random.Range(.8f, 1.2f);
+		_son.pitch = Random.Range(.8f, 1f);
 
-		_son.volume = .5f;
+		_son.volume = _vol;
 		
 		Harmony.Play(_son);
 	}

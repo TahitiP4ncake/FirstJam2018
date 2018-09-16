@@ -64,8 +64,16 @@ public class Pigeon : MonoBehaviour
 		//Change animation;
 
 		//rend.sprite = flySprite;	
+
+		AudioSource _son = Harmony.SetSource("SFX_pigeons");
+
+		_son.pitch = Random.Range(.8f, 1.2f);
+
+		Harmony.Play(_son);
 		
 		StartCoroutine(Fly());
+		
+		FindObjectOfType<PigeonManager>().Fly();
 	}
 
 	IEnumerator Fly()
