@@ -238,6 +238,7 @@ GameObject:
   - component: {fileID: 55762212}
   - component: {fileID: 55762211}
   - component: {fileID: 55762213}
+  - component: {fileID: 55762215}
   m_Layer: 8
   m_Name: Stick
   m_TagString: Untagged
@@ -301,6 +302,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 67.301}
+--- !u!114 &55762215
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 55762210}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4cf36f994245d94786244131d7a8676, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clipName: SFX_wood_stick
+  volume: 0.5
 --- !u!1001 &67635358
 Prefab:
   m_ObjectHideFlags: 0
@@ -1214,6 +1228,24 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5e912169cbdc45a4fb21cd9efe1d3326, type: 2}
   m_IsPrefabAsset: 0
+--- !u!1 &855881465 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1420369985177880, guid: 5e912169cbdc45a4fb21cd9efe1d3326,
+    type: 2}
+  m_PrefabInternal: {fileID: 855881464}
+--- !u!114 &855881466
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 855881465}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4cf36f994245d94786244131d7a8676, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clipName: SFX_rubber_ball
+  volume: 0.3
 --- !u!1 &856124495
 GameObject:
   m_ObjectHideFlags: 0

@@ -330,6 +330,7 @@
           </e>
         </e>
         <e p="Scripts" t="Include">
+          <e p="Ball.cs" t="Include" />
           <e p="BillBoard.cs" t="Include" />
           <e p="Chateau.cs" t="Include" />
           <e p="Controller.cs" t="Include" />
