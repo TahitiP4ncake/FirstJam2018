@@ -191,7 +191,7 @@ public class Controller : MonoBehaviour
 	{
 		AudioSource _son = Harmony.SetSource(_string);
 
-		_son.pitch = Random.Range(.8f, 1.1f);
+		_son.pitch = Random.Range(.8f, 1f);
 
 		_son.volume = _vol;
 		

@@ -49,6 +49,8 @@ public class Chateau : MonoBehaviour
 
 				_son.pitch = Random.Range(.9f, 1.1f);
 
+				_son.volume = .4f;
+
 				Harmony.Play(_son);
 
 
