@@ -46,6 +46,8 @@ public class Controller : MonoBehaviour
 	private bool running;
 
 	public GameObject aim;
+
+	public bool bobbleHead = true;
 	
 	void Start ()
 	{
@@ -83,6 +85,7 @@ public class Controller : MonoBehaviour
 			if (running == false)
 			{
 				running = true;
+				if(bobbleHead)
 				anim.SetTrigger("Run");
 			}
 		}

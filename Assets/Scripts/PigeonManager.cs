@@ -27,8 +27,12 @@ public class PigeonManager : MonoBehaviour
 
 	public void Sandwich()
 	{
+		
+		FindObjectOfType<SubtitleManager>().Talk("YES, MY SANDWICH!", true);
+
 		sandwich.enabled = false;
 		rend.sprite = finalSprite;
+		
 	}
 
 }
