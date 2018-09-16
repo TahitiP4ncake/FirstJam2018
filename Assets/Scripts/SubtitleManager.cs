@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using TMPro.Examples;
 using UnityEngine;
 
 public class SubtitleManager : MonoBehaviour
@@ -13,6 +14,8 @@ public class SubtitleManager : MonoBehaviour
 	public float maxTime;
 
 	private float timer;
+
+	public WarpTextExample warp;
 
 	private void Start()
 	{
@@ -28,6 +31,8 @@ public class SubtitleManager : MonoBehaviour
 			{
 				timer = 0;
 				active = false;
+				warp.Stop();
+				
 				subtitles.text = "";
 			}
 				
@@ -51,6 +56,9 @@ public class SubtitleManager : MonoBehaviour
 
 		active = true;
 		timer = 0;
+
+		warp.enabled = true;
+		warp.Restart();
 
 	}
 }

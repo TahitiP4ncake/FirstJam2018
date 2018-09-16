@@ -15,6 +15,10 @@ namespace TMPro.Examples
         public float SpeedMultiplier = 1.0f;
         public float CurveScale = 1.0f;
 
+
+        //JEFAITDESTRUCS
+
+        
         void Awake()
         {
             m_TextComponent = gameObject.GetComponent<TMP_Text>();
@@ -23,9 +27,23 @@ namespace TMPro.Examples
 
         void Start()
         {
-            StartCoroutine(WarpText());
+
+           StartCoroutine(WarpText());
         }
 
+        public void Restart()
+        {
+            StopAllCoroutines();
+            
+            StartCoroutine(WarpText());
+
+        }
+
+        public void Stop()
+        {
+            StopAllCoroutines();
+        }
+        
 
         private AnimationCurve CopyAnimationCurve(AnimationCurve curve)
         {
@@ -44,8 +62,10 @@ namespace TMPro.Examples
         /// <returns></returns>
         IEnumerator WarpText()
         {
-            VertexCurve.preWrapMode = WrapMode.Clamp;
-            VertexCurve.postWrapMode = WrapMode.Clamp;
+            
+            //HERE IS THE LINE THAT FUCKS EVERYTHING UP !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+           // VertexCurve.preWrapMode = WrapMode.Loop;
+           // VertexCurve.postWrapMode = WrapMode.Loop;
 
             //Mesh mesh = m_TextComponent.textInfo.meshInfo[0].mesh;
 
@@ -53,20 +73,28 @@ namespace TMPro.Examples
             Matrix4x4 matrix;
 
             m_TextComponent.havePropertiesChanged = true; // Need to force the TextMeshPro Object to be updated.
-            CurveScale *= 10;
-            float old_CurveScale = CurveScale;
-            AnimationCurve old_curve = CopyAnimationCurve(VertexCurve);
+           
 
+           // CurveScale *= 10;
+            //float old_CurveScale = CurveScale;
+            //AnimationCurve old_curve = CopyAnimationCurve(VertexCurve);
+
+            float _time = 0;
+            
             while (true)
             {
+                /*
                 if (!m_TextComponent.havePropertiesChanged && old_CurveScale == CurveScale && old_curve.keys[1].value == VertexCurve.keys[1].value)
                 {
                     yield return null;
                     continue;
                 }
+                */
 
-                old_CurveScale = CurveScale;
-                old_curve = CopyAnimationCurve(VertexCurve);
+                //old_CurveScale = CurveScale;
+                //old_curve = CopyAnimationCurve(VertexCurve);
+                
+                //m_TextComponent.color = color;
 
                 m_TextComponent.ForceMeshUpdate(); // Generate the mesh and populate the textInfo with data we can use and manipulate.
 
@@ -86,6 +114,7 @@ namespace TMPro.Examples
 
                 for (int i = 0; i < characterCount; i++)
                 {
+                    
                     if (!textInfo.characterInfo[i].isVisible)
                         continue;
 
@@ -109,13 +138,15 @@ namespace TMPro.Examples
                     // Compute the angle of rotation for each character based on the animation curve
                     float x0 = (offsetToMidBaseline.x - boundsMinX) / (boundsMaxX - boundsMinX); // Character's position relative to the bounds of the mesh.
                     float x1 = x0 + 0.0001f;
-                    float y0 = VertexCurve.Evaluate(x0) * CurveScale;
-                    float y1 = VertexCurve.Evaluate(x1) * CurveScale;
-
+                    float y0 = VertexCurve.Evaluate(x0 + _time * SpeedMultiplier) * CurveScale;
+                    float y1 = VertexCurve.Evaluate(x1 + _time * SpeedMultiplier) * CurveScale;
+                    
+                    
                     Vector3 horizontal = new Vector3(1, 0, 0);
                     //Vector3 normal = new Vector3(-(y1 - y0), (x1 * (boundsMaxX - boundsMinX) + boundsMinX) - offsetToMidBaseline.x, 0);
                     Vector3 tangent = new Vector3(x1 * (boundsMaxX - boundsMinX) + boundsMinX, y1) - new Vector3(offsetToMidBaseline.x, y0);
 
+                    
                     float dot = Mathf.Acos(Vector3.Dot(horizontal, tangent.normalized)) * 57.2957795f;
                     Vector3 cross = Vector3.Cross(horizontal, tangent);
                     float angle = cross.z > 0 ? dot : 360 - dot;
@@ -133,12 +164,17 @@ namespace TMPro.Examples
                     vertices[vertexIndex + 3] += offsetToMidBaseline;
                 }
 
-
+                
+                
                 // Upload the mesh with the revised information
                 m_TextComponent.UpdateVertexData();
+                                
+                yield return new WaitForSecondsRealtime(0.025f);
 
-                yield return new WaitForSeconds(0.025f);
+                _time += 0.025f;
+
             }
+            
         }
     }
 }
