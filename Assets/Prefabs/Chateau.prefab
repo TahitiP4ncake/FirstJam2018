@@ -248,6 +248,8 @@ MonoBehaviour:
   - {fileID: 198431295106384930}
   - {fileID: 198171658166433608}
   - {fileID: 198052969773626494}
+  lines:
+  - noooo
 --- !u!135 &135891568808153096
 SphereCollider:
   m_ObjectHideFlags: 1

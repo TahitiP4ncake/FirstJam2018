@@ -171,10 +171,9 @@ public class Controller : MonoBehaviour
 		{
 			hit.collider.GetComponent<Interaction>().Poke();
 		}
-		else
-		{
+		
 			Bark();
-		}
+		
 	}
 	
 	void Bark()

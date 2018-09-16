@@ -7,7 +7,8 @@ public enum interactionType
 	maitre,
 	ball, 
 	stick, 
-	hide
+	hide, 
+	pigeon
 	
 }
 
@@ -22,9 +23,11 @@ public class Interaction : MonoBehaviour
 
 	public List<string> lines;
 
+	public List<string> previousLines;
+	
 	public int lineIndex;
 
-	private bool done;
+	public bool done;
 	
 	private void Start()
 	{
@@ -64,6 +67,29 @@ public class Interaction : MonoBehaviour
 		
 			
 			
+		}
+		else if (type == interactionType.pigeon)
+		{
+			if (!done)
+			{
+				sub.Talk(previousLines[lineIndex], true);
+			}
+			else
+			{
+				sub.Talk(lines[lineIndex], true);
+			}
+
+		
+			if (lineIndex < lines.Count - 1)
+			{
+				lineIndex++;
+			}
+			else
+			{
+				lineIndex = 0;
+			}
+
+			PlaySound("ah");
 		}
 		else
 		{
