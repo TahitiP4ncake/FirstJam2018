@@ -114,10 +114,12 @@ MonoBehaviour:
   manager: {fileID: 0}
   type: 3
   lines:
-  - Oh no you found me
-  - Arg, I though I was clever
-  - tss, clever dog
+  - Shh, you'll make me spot
+  - Alright, congratulation, you found me
+  - congratulation, you found us all
+  previousLines: []
   lineIndex: 0
+  done: 0
 --- !u!114 &114941967067018484
 MonoBehaviour:
   m_ObjectHideFlags: 1
