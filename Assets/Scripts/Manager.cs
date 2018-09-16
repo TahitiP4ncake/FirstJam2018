@@ -39,7 +39,7 @@ public class Manager : MonoBehaviour
 		}
 	}
 
-	void Pause()
+	public void Pause()
 	{
 		if (pauseMenu.activeSelf == false)
 		{
