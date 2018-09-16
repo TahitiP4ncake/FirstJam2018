@@ -17,7 +17,7 @@ public class PigeonManager : MonoBehaviour
 
 	public void Fly()
 	{
-
+		pigeonGone++;
 
 		if (pigeonGone == pigeonTotal)
 		{

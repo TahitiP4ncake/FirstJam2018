@@ -66,6 +66,8 @@ public class Pigeon : MonoBehaviour
 		//rend.sprite = flySprite;	
 		
 		StartCoroutine(Fly());
+		
+		FindObjectOfType<PigeonManager>().Fly();
 	}
 
 	IEnumerator Fly()
