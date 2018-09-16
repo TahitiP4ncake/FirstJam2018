@@ -39,7 +39,7 @@ public class Chateau : MonoBehaviour
 
 				FindObjectOfType<Morve>().rend.enabled = true;
 				
-				sub.Talk(lines[Random.Range(0,2)]);
+				sub.Talk(lines[0]);
 				
 				Invoke("Rebuild", 15);
 
