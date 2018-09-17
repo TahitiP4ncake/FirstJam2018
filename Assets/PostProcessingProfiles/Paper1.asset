@@ -69,7 +69,7 @@ MonoBehaviour:
       screenEdgeMask:
         intensity: 0.03
   depthOfField:
-    m_Enabled: 0
+    m_Enabled: 1
     m_Settings:
       focusDistance: 10
       aperture: 5.6
@@ -303,7 +303,7 @@ MonoBehaviour:
     m_Enabled: 1
     m_Settings:
       lut: {fileID: 2800000, guid: c4ef5f4cc1768bf47b0e9c9bd6877f44, type: 3}
-      contribution: 1
+      contribution: 0.797
   chromaticAberration:
     m_Enabled: 0
     m_Settings:

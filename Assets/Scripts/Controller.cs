@@ -90,7 +90,7 @@ public class Controller : MonoBehaviour
 			{
 				running = true;
 				if(bobbleHead)
-				anim.SetTrigger("Run");
+				anim.SetBool("Run", true);
 
 				dogSound[1].Stop();
 				
@@ -104,7 +104,7 @@ public class Controller : MonoBehaviour
 			if (running == true)
 			{
 				running = false;
-				anim.SetTrigger("Stop");
+				anim.SetBool("Run", false);
 				
 				
 				dogSound[0].Stop();
@@ -178,7 +178,7 @@ public class Controller : MonoBehaviour
 	
 	void Bark()
 	{
-		PlaySound("SFX_bark2");
+		PlaySound("SFX_bark2", .3f);
 
 		
 		sub.Talk("BARK", false);

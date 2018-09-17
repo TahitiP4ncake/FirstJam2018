@@ -28,6 +28,8 @@ public class Pigeon : MonoBehaviour
 	public List<Sprite> sprites;
 
 	public Sprite flySprite;
+
+	private float y;
 	
 	void Start ()
 	{
@@ -37,7 +39,9 @@ public class Pigeon : MonoBehaviour
 
 		rend.sprite = sprites[Random.Range(0, sprites.Count)];
 
-		rend.castShadows = true;
+		//rend.castShadows = true;*
+
+		y = transform.position.y;
 	}
 
 
@@ -61,9 +65,8 @@ public class Pigeon : MonoBehaviour
 		direction = transform.position +
 		            new Vector3(Random.Range(-1f, 1f), 5, Random.Range(-1f, 1f));
 
-		//Change animation;
 
-		//rend.sprite = flySprite;	
+		rend.sprite = flySprite;	
 
 		AudioSource _son = Harmony.SetSource("SFX_pigeons");
 
@@ -120,7 +123,7 @@ public class Pigeon : MonoBehaviour
 		while (_i < 1)
 		{
 
-			transform.position = new Vector3(Mathf.Lerp(_origin.x, _origin.x + direction.x/jumpDistance, _i), jumpCurve.Evaluate(_i) * jumpforce, Mathf.Lerp(_origin.z, _origin.z + direction.z/jumpDistance, _i));
+			transform.position = new Vector3(Mathf.Lerp(_origin.x, _origin.x + direction.x/jumpDistance, _i), y + jumpCurve.Evaluate(_i) * jumpforce, Mathf.Lerp(_origin.z, _origin.z + direction.z/jumpDistance, _i));
 			
 			
 			yield return null;

@@ -114,7 +114,7 @@ public class Manager : MonoBehaviour
 		{
 			dog.bobbleHead = false;
 			bobbleText.text = "bobblehead off";
-			dog.anim.SetTrigger("Stop");
+			dog.anim.SetBool("Run", false);
 			
 		}
 		else
